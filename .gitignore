@@ -5,6 +5,5 @@
 !.elasticbeanstalk/*.global.yml
 
 .ebextensions/
-crsp/
 db.sqlite3
 
