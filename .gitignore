@@ -6,4 +6,4 @@
 
 .ebextensions/
 db.sqlite3
-
+mysite/__pycache__/settings.cpython-39.pyc
