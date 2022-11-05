@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^yz@l5e-=%qpk+^q1xb(u=bm^wu7savzfzx#^u^&k&39%g$b8j'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS = ['crsp.eu-central-1.elasticbeanstalk.com', 'http://crsp.eu-central-1.elasticbeanstalk.com', '127.0.0.1']
 
@@ -85,10 +86,10 @@ DATABASES = {
 DATABASES = {
    'default': {
        'ENGINE': 'django.db.backends.postgresql',
-       'NAME': 'crsp_db',
+       'NAME': config('NAME'),
        'USER': 'postgres',
-       'PASSWORD': 'e_203G&57',
-       'HOST': 'database-2.cdylbm3uujb4.eu-central-1.rds.amazonaws.com',
+       'PASSWORD': config('PASSWORD'),
+       'HOST': config('HOST'),
        'PORT': '5432',
    }
 }
