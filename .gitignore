@@ -6,8 +6,5 @@
 
 .ebextensions/
 db.sqlite3
-mysite/mysite/__pycache__/settings.cpython-39.pyc
 .env
-crsp/__pycache__/*
-crsp/migrations/__pycache__/*
 **/__pycache__
