@@ -78,6 +78,16 @@
       </nav>
         <div class="container shadow p-3 mb-5 bg-body rounded" style="width: 17%; min-width: 300px; margin-top: 100px;">
           <div style="text-align: center; margin: 5%; font-family: 'Akshar', sans-serif; font-size: 24px;">
+            {% if existing == 1 %}
+            <div style="text-align: center; margin: 5%; font-family: 'Akshar', sans-serif; font-size: 20px; color: red">
+              You have already registered!
+            </div>
+            {% endif %}
+            {% if saved == 1 %}
+            <div class="mb-3" style="font-size: 16px">
+              You have succesfully login, click <a href="login">here</a> to login.
+            </div>
+            {% endif %}
           <form action="/register" method="POST">
             {% csrf_token %}
             <div class="mb-3">
