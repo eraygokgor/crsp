@@ -25,14 +25,18 @@ def profile(request):
 def register_user(request):
     print("register_user requested")
     if request.method == 'POST':
-        username = request.POST.get("inputEmail")
-        email = request.POST.get("inputEmail")
-        password = request.POST.get("inputPassword")
-        user = User.objects.create_user(username=username, email=email, password=password)
-        user.first_name = request.POST.get("inputName")
-        user.last_name = request.POST.get("inputLastName")
-        user.save()
-        return redirect("/")
+        if User.objects.filter(email=request.POST.get("inputEmail")).exists():
+            return render(request, "crsp/signup.html", {'existing': 1})
+        else:
+            username = request.POST.get("inputEmail")
+            email = request.POST.get("inputEmail")
+            password = request.POST.get("inputPassword")
+            user = User.objects.create_user(username=username, email=email, password=password)
+            user.first_name = request.POST.get("inputName")
+            user.last_name = request.POST.get("inputLastName")
+            user.save()
+            return render(request, "crsp/signup.html", {'saved': 1})
+            # return redirect("/")
 
 
 def logout(request):
