@@ -79,41 +79,40 @@
           </div>
         </div>
       </nav>
-        <div class="container shadow p-3 mb-5 bg-body rounded" style="width: 17%; min-width: 300px; margin-top: 100px;">
-          <div style="text-align: center; margin: 5%; font-family: 'Akshar', sans-serif; font-size: 24px;">
-            {% if existing == 1 %}
-            <div style="text-align: center; margin: 5%; font-family: 'Akshar', sans-serif; font-size: 20px; color: red">
-              You have already registered!
-            </div>
-            {% endif %}
-            {% if saved == 1 %}
-            <div class="mb-3" style="font-size: 16px">
-              You have succesfully login, click <a href="login">here</a> to login.
-            </div>
-            {% endif %}
-          <form action="/register" method="POST">
-            {% csrf_token %}
-            <div class="mb-3">
-              <label for="inputName" class="form-label">Name</label>
-              <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Your First Name" style="font-size: 16px;" required>
-            </div>
-            <div class="mb-3">
-                <label for="inputLastName" class="form-label">Last Name</label>
-                <input type="text" class="form-control" id="inputLastName" name="inputLastName" placeholder="Your Last Name" style="font-size: 16px;" required>
-            </div>
-            <div class="mb-3">
-              <label for="inputEmail" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Your e-mail address" style="font-size: 16px;" required>
-            </div>
-            <div class="mb-3">
-              <label for="inputPassword" class="form-label">Password</label>
-              <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="*****" style="font-size: 16px;" required>
-            </div>
-            <div class="mb-3" style="font-size: 16px">
-              If you have an account, <a href="login">sign in</a> 
-            </div>
-            <input class="btn btn-primary" type="submit" value="Register" style="font-size: 16px;">
-          </form>
+      
+
+      <div class="container">
+        <p>Settings</p>
         </div>
+        <div class="container" style="width: 17%; min-width: 300px; margin-top: 50px;">
+        <form action="/changes" method="post">
+          {% csrf_token %}
+          <p style="font-size: 36px;">Settings</p>
+          <div class="mb-3">
+            <label for="inputEmail" class="form-label" disabled>Email address</label>
+            <input type="email" class="form-control" id="inputEmail" name="inputEmail" value={{email}} style="font-size: 14px;" readonly="readonly">
+          </div>
+          <div class="mb-3">
+            <label for="firstName" class="form-label">New First Name</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter your new name" value={{first_name}} style="font-size: 14px;">
+          </div>
+          <div class="mb-3">
+            <label for="lastName" class="form-label">New Last name</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter your new last name" value={{last_name}} style="font-size: 14px;">
+          </div>
+          <div class="mb-3">
+            <label for="inputPassword" class="form-label">New Password</label>
+            <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Enter your new password" style="font-size: 14px;">
+          </div>
+          <input class="btn btn-success" type="submit" value="Save Changes" style="font-size: 14px;">
+        </form>
+        <form action="/delete" method="post">
+          {% csrf_token %}
+        <p style="padding-top: 10%;">Want to delete your account?</p>
+        <input class="btn btn-warning" type="submit" value="Delete my account" style="font-size: 14px;">
+        </form>
+      </div>
     </body>
-</html>
+  </html>
+    
+      
