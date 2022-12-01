@@ -22,6 +22,12 @@ def profile(request):
     print("profile requested")
     return render(request, 'crsp/profile.html')
 
+def settings(request):
+    print("settings requested")
+    if request.user.is_authenticated:
+        user = request.user
+        return render(request, "crsp/settings.html", {"email": user.email, "first_name": user.first_name, "last_name": user.last_name})
+
 def register_user(request):
     print("register_user requested")
     if request.method == 'POST':
@@ -44,9 +50,38 @@ def logout(request):
     auth_logout(request)
     return redirect("/")
 
+def changes(request):
+    print("changes requested")
+    if request.method == "POST":
+        try:
+            new_password = request.POST["inputPassword"]
+            first_name = request.POST["firstName"]
+            last_name = request.POST["lastName"]
+            user = request.user
+            if new_password != '':
+                print(new_password)
+                user.set_password(new_password)
+            if first_name != '':
+                print(first_name)
+                user.first_name = first_name
+            if last_name != '':
+                print(last_name)
+                user.last_name = last_name
+            user.save()
+            return redirect("/")
+        except:
+            print(e)
+            return render(request, 'crsp/profile.html')
+
+def delete(request):
+    print("delete requested")
+    if request.user.is_authenticated:
+        user = request.user
+        request.user.delete()
+        auth_logout(request)
+        return redirect("/")
 
 def signin(request):
-    print("signin requested")
     if request.method == 'POST':
         print("POST")
         try:
@@ -61,9 +96,8 @@ def signin(request):
                 return render(request, 'crsp/profile.html', {'name': user.first_name, 'lastname': user.last_name,})
             else:
                 return render(request, 'crsp/login.html', {'auth': 0})
-        except:
+        except Exception as e:
             return render(request, 'crsp/login.html', {'auth': 0})
     if request.method == 'GET' and request.user.is_authenticated:
-        print("signin GET req")
         user = request.user
         return render(request, 'crsp/profile.html', {'name': user.first_name, 'lastname': user.last_name,})
