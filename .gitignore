@@ -8,5 +8,5 @@
 db.sqlite3
 .env
 **/__pycache__
-./crsp_env/
-crsp_env/
+./env/
+env/
