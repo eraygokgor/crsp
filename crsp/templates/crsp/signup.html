@@ -13,7 +13,7 @@
     <body style="font-family: 'Roboto', sans-serif;" class="p-3 m-0 border-0">
       <nav class="navbar fixed-top" style="background-color: #E9F7EF; box-shadow: 3px 3px 4px #CCD1D1;">
         <div class="container">
-          <a class="navbar-brand" href="/"><i class="bi bi-cup-hot-fill" style="font-size: 24px; color: #B5947D;"></i> <span style="font-family: Pacifico; font-size: 18px;">C.R.S.P.</span></a>
+          <a class="navbar-brand" href="/"><i class="bi bi-cup-hot-fill" style="font-size: 24px; color: #B5947D;"></i> <span style="font-family: Pacifico; font-size: 14px;">C.R.S.P.</span></a>
           {% if not request.user.is_authenticated %}
           <span class="navbar-text" style="font-size: 14px;"><a style="white-space: nowrap; text-decoration: none; " href="login"><i class="bi bi-person-fill"></i> Login</a><span style="font-size: 18px; color: #B5947D;">  |  </span><a style="white-space: nowrap; text-decoration: none; color: #424949; color: #839192;" href="signup">Sign Up</a></span>
           {% endif %}
@@ -24,7 +24,7 @@
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasNavbar"
             aria-controls="offcanvasNavbar"
-            style="margin-top: 0.1%; margin-bottom: 0.1%"
+            style="margin-top: 0.1%; margin-bottom: 0.1%; font-size: 14px;"
           >
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -33,9 +33,10 @@
             tabindex="-1"
             id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel"
+            style="font-size: 14px;"
           >
             <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><i class="bi bi-list"></i> Menu</h5>
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><i class="bi bi-list" style="font-size: 16px;"></i> Menu</h5>
               <button
                 type="button"
                 class="btn-close"
@@ -66,8 +67,9 @@
                   type="search"
                   placeholder="Search"
                   aria-label="Search"
+                  style="font-size: 14px;"
                 />
-                <button class="btn btn-outline-success" type="submit">
+                <button class="btn btn-outline-success" type="submit" style="font-size: 14px;">
                   Search
                 </button>
               </form>
@@ -75,7 +77,8 @@
           </div>
           {% endif %}
         </div>
-      </nav>  
+      </nav>
+  
         <div class="container shadow p-3 mb-5 bg-body rounded" style="width: 17%; min-width: 300px; margin-top: 100px;">
           <div style="text-align: center; margin: 5%; font-family: 'Akshar', sans-serif; font-size: 24px;">
             {% if existing == 1 %}
