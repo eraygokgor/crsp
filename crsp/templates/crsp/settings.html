@@ -4,23 +4,27 @@
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Akshar&family=Roboto&display=swap" rel="stylesheet">
-
-
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
       <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet"/>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body style="font-family: 'Roboto', sans-serif;" class="p-3 m-0 border-0">
-      <nav class="navbar bg-light fixed-top">
+      <nav class="navbar fixed-top" style="background-color: #E9F7EF; box-shadow: 3px 3px 4px #CCD1D1;">
         <div class="container">
-          <a class="navbar-brand" href="/">CRSP</a>
+          <a class="navbar-brand" href="/"><i class="bi bi-cup-hot-fill" style="font-size: 24px; color: #B5947D;"></i> <span style="font-family: Pacifico; font-size: 18px;">C.R.S.P.</span></a>
+          {% if not request.user.is_authenticated %}
+          <span class="navbar-text" style="font-size: 14px;"><a style="white-space: nowrap; text-decoration: none; color: #839192;" href="signup"><i class="bi bi-activity"></i> Sign Up</a><span style="font-size: 18px; color: #B5947D;">  |  </span><a style="white-space: nowrap; text-decoration: none; color: #424949;" href="login"><i class="bi bi-key"></i> Login</a></span>
+          {% endif %}
+          {% if request.user.is_authenticated %}
           <button
             class="navbar-toggler"
             type="button"
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasNavbar"
             aria-controls="offcanvasNavbar"
-            style="margin-top: 1%; margin-bottom: 0.5%"
+            style="margin-top: 0.1%; margin-bottom: 0.1%"
           >
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -31,7 +35,7 @@
             aria-labelledby="offcanvasNavbarLabel"
           >
             <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><i class="bi bi-list"></i> Menu</h5>
               <button
                 type="button"
                 class="btn-close"
@@ -42,27 +46,19 @@
             <div class="offcanvas-body">
               <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="/">Home</a>
+                  <a class="nav-link active" aria-current="page" href="/"><i class="bi bi-house"></i> Home</a>
                 </li>
-                {% if not request.user.is_authenticated %}
+              
               <li class="nav-item">
-                <a class="nav-link" href="login">Login</a>
+                <a class="nav-link" href="profile"><i class="bi bi-person"></i> Profile</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="signup">Register</a>
-              </li>
-              {% endif %}
-              {% if request.user.is_authenticated %}
-              <li class="nav-item">
-                <a class="nav-link" href="profile">Profile</a>
+                <a class="nav-link" href="settings"><i class="bi bi-gear"></i> Account Settings</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="settings">Account Settings</a>
+                <a class="nav-link" style="color:#D35400;" href="logout"><i class="bi bi-box-arrow-right"></i> Logout</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" style="color:#D35400;" href="logout">Logout</a>
-              </li>
-              {% endif %}
+              
               </ul>
               <form class="d-flex mt-3" role="search">
                 <input
@@ -77,10 +73,9 @@
               </form>
             </div>
           </div>
+          {% endif %}
         </div>
       </nav>
-      
-
       <div class="container">
         <p>Settings</p>
         </div>
