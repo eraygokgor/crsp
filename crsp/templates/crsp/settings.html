@@ -102,12 +102,12 @@
             <label for="inputPassword" class="form-label">New Password</label>
             <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Enter your new password" style="font-size: 14px;">
           </div>
-          <input class="btn btn-success" type="submit" value="Save Changes" style="font-size: 14px;">
+          <input class="btn btn-outline-success" type="submit" value="Save Changes" style="font-size: 14px;">
         </form>
         <form action="/delete" method="post">
           {% csrf_token %}
         <p style="padding-top: 10%;">Want to delete your account?</p>
-        <input class="btn btn-warning" type="submit" value="Delete my account" style="font-size: 14px;">
+        <input class="btn btn-outline-danger" type="submit" value="Delete my account" style="font-size: 14px;">
         </form>
       </div>
     </body>

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -79,8 +80,18 @@
         </div>
       </nav>
 
-      <div class="container">
-      <p style="font-size: 24px; text-align: center; padding-top: 200px;">Welcome to the home page of Coffee Recipe Sharing Platform!</p>
+      <div class="container" style="width:75%;">
+      <p style="padding-top: 4%;"></p>
+
+      <div class="row">
+        <div class="col-sm"><img src="{% static 'main.jpg' %}" style="width:100%; border-radius: 10px;"></div>
+      </div>
+      
+      <div class="row">
+        <div class="col-sm" style="height: 300px; border: 1px solid; border-radius: 10px; margin: 1%;">A</div>
+        <div class="col-sm" style="height: 300px; border: 1px solid; border-radius: 10px; margin: 1%;">A</div>
+        <div class="col-sm" style="height: 300px; border: 1px solid; border-radius: 10px; margin: 1%;">A</div>
+      </div>
 
       </div>
     </body>
