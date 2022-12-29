@@ -5,6 +5,13 @@
     margin: 1%;
 }
 
+.one-recipe {
+    height: 1000;
+    border: 2px solid #F4F6F6;
+    border-radius: 10px;
+    margin: 1%;
+}
+
 .recipe:hover {
     border-color: #EDBB99;
 }
