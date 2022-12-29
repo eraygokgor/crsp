@@ -93,7 +93,7 @@
       
       <div class="row">
         {% for ad in data1 %}
-        <div class="col-sm shadow p-3 mb-5 bg-body rounded recipe" style="text-align: center;">
+        <div class="col-sm shadow p-3 mb-5 bg-body rounded recipe" onclick="location.href='recipe/{{ad.id}}';" style="cursor: pointer; text-align: center;">
           <br><br>
           <b>{{ad.title}}</b><br>
           {{ad.beans}} <br>
@@ -105,7 +105,7 @@
       </div>
       <div class="row">
         {% for ad in data2 %}
-        <div class="col-sm shadow p-3 mb-5 bg-body rounded recipe" style="text-align: center;">
+        <div class="col-sm shadow p-3 mb-5 bg-body rounded recipe" onclick="location.href='recipe/{{ad.id}}';" style="cursor: pointer; text-align: center;">
           <br><br>
           <b>{{ad.title}}</b><br>
           {{ad.beans}} <br>

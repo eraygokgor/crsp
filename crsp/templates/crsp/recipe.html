@@ -53,15 +53,15 @@
               <a class="nav-link active" aria-current="page" href="/"><i class="bi bi-house"></i> Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="add"><i class="bi bi-plus-circle"></i> Create Recipe</a>
+              <a class="nav-link" href="/add"><i class="bi bi-plus-circle"></i> Create Recipe</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="recipes"><i class="bi bi-list-ol"></i> My Recipes</a>
+              <a class="nav-link" href="/recipes"><i class="bi bi-list-ol"></i> My Recipes</a>
             </li>
-              <a class="nav-link" href="settings"><i class="bi bi-gear"></i> Account Settings</a>
+              <a class="nav-link" href="/settings"><i class="bi bi-gear"></i> Account Settings</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" style="color:#D35400;" href="logout"><i class="bi bi-box-arrow-right"></i> Logout</a>
+              <a class="nav-link" style="color:#D35400;" href="./logout"><i class="bi bi-box-arrow-right"></i> Logout</a>
             </li>
             
             </ul>
@@ -88,18 +88,23 @@
     <div class="row">
       <div class="col-sm shadow p-3 mb-5 bg-body rounded one-recipe" style="text-align: center;">
         <br>
-        <b>{{data.title}}</b><br>
-        {{data.beans}} <br>
-        {{data.roast}} <br>
-        {{data.grinder}} <br>
-        {{data.click}} <br>
-        {{data.method}} <br>
-        {{data.blooming}} <br>
-        {{data.duration}} <br>
-        {{data.ratio}} <br>
-        {{data.created_at}} <br>
-        {{data.description}} <br>
-        <i class="bi bi-cup-hot" style="font-size: 36px;"></i>
+        <b style="font-family: Pacifico; font-size: 24px;">{{data.title}}</b><br><br>
+        <div class="col-sm"><img src="{% static 'coffee.jpg' %}" style="width:100%; border-radius: 5px;"></div>
+        <br>
+        <p><b>Beans: </b> {{data.beans}}</p>
+        <p><b>Roast Type: </b> {{data.roast}}</p>
+        <p><b>Grinder: </b> {{data.grinder}}</p>
+        <p><b>Click Settings: </b> {{data.click}}</p>
+        <p><b>Method: </b> {{data.method}}</p>
+        <p><b>Blooming Duration: </b> {{data.blooming}} sec.</p>
+        <p><b>Total Duration: </b> {{data.duration}} sec.</p>
+        <p><b>Coffee/Water Ratio: </b> {{data.ratio}}</p>
+        <p><i>Created at </i> {{data.created_at}}</p>
+        <p><i>Created by </i> {{creator.first_name}} {{creator.last_name}}</p>
+        <p>___________________________________________________________________________________</p>
+        <p>{{data.descripton}}</p>
+        <p>___________________________________________________________________________________</p>
+        <i class="bi bi-cup-hot-fill" style="font-size: 36px; color: #B5947D;"></i>
       </div>
     </div>
 </body>

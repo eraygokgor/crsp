@@ -30,6 +30,11 @@ def recipes(request):
     print("recipes requested")
     return render(request, 'crsp/recipes.html', {"data": data})
 
+def recipe(request, objectid):
+    data = Recipes.objects.get(id=objectid)
+    creator = User.objects.get(id=data.user_id)
+    return render(request, 'crsp/recipe.html', {"data": data, "creator": creator})
+
 def settings(request):
     print("settings requested")
     if request.user.is_authenticated:
@@ -85,8 +90,6 @@ def register_user(request):
             user.last_name = request.POST.get("inputLastName")
             user.save()
             return render(request, "crsp/signup.html", {'saved': 1})
-            # return redirect("/")
-
 
 def logout(request):
     print("logout requested")
