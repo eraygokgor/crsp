@@ -71,7 +71,7 @@ def changes(request):
             return redirect("/")
         except:
             print(e)
-            return render(request, 'crsp/profile.html')
+            return render(request, 'crsp/index.html')
 
 def delete(request):
     print("delete requested")
@@ -93,11 +93,13 @@ def signin(request):
                 print(request.user.is_authenticated)
                 name = user.first_name
                 lastname = user.last_name
-                return render(request, 'crsp/profile.html', {'name': user.first_name, 'lastname': user.last_name,})
+                #return render(request, 'crsp/index.html')
+                return redirect("/")
             else:
                 return render(request, 'crsp/login.html', {'auth': 0})
         except Exception as e:
             return render(request, 'crsp/login.html', {'auth': 0})
     if request.method == 'GET' and request.user.is_authenticated:
         user = request.user
-        return render(request, 'crsp/profile.html', {'name': user.first_name, 'lastname': user.last_name,})
+        # return render(request, 'crsp/index.html')
+        return redirect("/")
