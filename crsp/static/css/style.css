@@ -1,3 +1,11 @@
-col-sm:hover {
-    border: 2px solid #EDBB99;
+.recipe {
+    height: 250px;
+    border: 2px solid #F4F6F6;
+    border-radius: 10px;
+    margin: 1%;
+}
+
+.recipe:hover {
+    border-color: #EDBB99;
+    color: purple;
 }
