@@ -46,14 +46,15 @@
             </div>
             <div class="offcanvas-body">
               <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="/"><i class="bi bi-house"></i> Home</a>
-                </li>
-              
               <li class="nav-item">
-                <a class="nav-link" href="profile"><i class="bi bi-person"></i> Profile</a>
+                <a class="nav-link active" aria-current="page" href="/"><i class="bi bi-house"></i> Home</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="add"><i class="bi bi-plus-circle"></i> Create Recipe</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="recipes"><i class="bi bi-list-ol"></i> My Recipes</a>
+              </li>
                 <a class="nav-link" href="settings"><i class="bi bi-gear"></i> Account Settings</a>
               </li>
               <li class="nav-item">
@@ -85,7 +86,7 @@
             Incorrect email or password, try again.
           </div>
           {% endif %}
-          <form action="/profile" method="post">
+          <form action="/signin" method="post">
             {% csrf_token %}
             <div class="mb-3">
               <label for="inputEmail" class="form-label">Email address</label>
