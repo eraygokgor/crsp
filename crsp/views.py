@@ -9,7 +9,9 @@ from crsp.models import Recipes
 # Create your views here.
 def index(request):
     print("index requested")
-    return render(request, 'crsp/index.html')
+    data1 = Recipes.objects.all().order_by('-id')[:3]
+    data2 = Recipes.objects.all().order_by('-id')[3:6]
+    return render(request, 'crsp/index.html', {"data1": data1, "data2": data2})
 
 def signup(request):
     print("signup requested")
@@ -24,8 +26,9 @@ def add(request):
     return render(request, 'crsp/add.html')
 
 def recipes(request):
-    print("add requested")
-    return render(request, 'crsp/recipes.html')
+    data = Recipes.objects.all().filter(user_id=request.user.id)
+    print("recipes requested")
+    return render(request, 'crsp/recipes.html', {"data": data})
 
 def settings(request):
     print("settings requested")
@@ -66,7 +69,7 @@ def add_recipe(request):
         recipe = Recipes(**data)
         recipe.save()
         print("recipe saved")
-        return redirect("add")
+        return redirect("recipes")
     
 def register_user(request):
     print("register_user requested")

@@ -92,15 +92,28 @@
       </div>
       
       <div class="row">
-        <div class="col-sm shadow p-3 mb-5 bg-body rounded recipe"></div>
-        <div class="col-sm shadow p-3 mb-5 bg-body rounded recipe"></div>
-        <div class="col-sm shadow p-3 mb-5 bg-body rounded recipe"></div>
+        {% for ad in data1 %}
+        <div class="col-sm shadow p-3 mb-5 bg-body rounded recipe" style="text-align: center;">
+          <br><br>
+          <b>{{ad.title}}</b><br>
+          {{ad.beans}} <br>
+          {{ad.method}} <br>
+          <br>
+          <i class="bi bi-cup-hot" style="font-size: 36px;"></i>
+        </div>
+        {% endfor %}
       </div>
-      
       <div class="row">
-        <div class="col-sm shadow p-3 mb-5 bg-body rounded recipe"></div>
-        <div class="col-sm shadow p-3 mb-5 bg-body rounded recipe"></div>
-        <div class="col-sm shadow p-3 mb-5 bg-body rounded recipe"></div>
+        {% for ad in data2 %}
+        <div class="col-sm shadow p-3 mb-5 bg-body rounded recipe" style="text-align: center;">
+          <br><br>
+          <b>{{ad.title}}</b><br>
+          {{ad.beans}} <br>
+          {{ad.method}} <br>
+          <br>
+          <i class="bi bi-cup-hot" style="font-size: 36px;"></i>
+        </div>
+        {% endfor %}
       </div>
 
       </div>
