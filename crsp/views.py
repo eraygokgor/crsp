@@ -3,6 +3,7 @@ import psycopg2
 from datetime import datetime
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
+from crsp.models import Recipes
 
 
 # Create your views here.
@@ -18,16 +19,55 @@ def login(request):
     print("login requested")
     return render(request, 'crsp/login.html')
 
-def profile(request):
-    print("profile requested")
-    return render(request, 'crsp/profile.html')
+def add(request):
+    print("add requested")
+    return render(request, 'crsp/add.html')
+
+def recipes(request):
+    print("add requested")
+    return render(request, 'crsp/recipes.html')
 
 def settings(request):
     print("settings requested")
     if request.user.is_authenticated:
         user = request.user
         return render(request, "crsp/settings.html", {"email": user.email, "first_name": user.first_name, "last_name": user.last_name})
+def add_recipe(request):
+    if request.method == "GET":
+        return render(request, "clickandrent/add.html")
+    if request.method == "POST":
+        # Data
+        title = request.POST['inputTitle']
+        beans = request.POST['inputBeans']
+        roast = request.POST['inputRoast']
+        grinder = request.POST['inputGrinder']
+        click = request.POST['inputGrinderClick']
+        method = request.POST['inputMethod']
+        blooming = request.POST['inputBlooming']
+        duration = request.POST['inputDuration']
+        ratio = request.POST['inputRatio']
+        descripton = request.POST['inputDescription']
 
+        data = {
+            "user_id": request.user.id,
+            "title": title,
+            "beans": beans,
+            "roast": roast,
+            "grinder": grinder,
+            "click": click,
+            "method": method,
+            "blooming": blooming,
+            "duration": duration,
+            "ratio": ratio,
+            "method": method,
+            "descripton": descripton,
+        }
+
+        recipe = Recipes(**data)
+        recipe.save()
+        print("recipe saved")
+        return redirect("add")
+    
 def register_user(request):
     print("register_user requested")
     if request.method == 'POST':
