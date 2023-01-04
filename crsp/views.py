@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-import psycopg2
+import pandas as pd
 from datetime import datetime
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
@@ -32,10 +32,13 @@ def recipes(request):
 
 def recipe(request, objectid):
     data = Recipes.objects.get(id=objectid)
+    try:
+        recipe_rate = pd.DataFrame(list(Rates.objects.filter(recipe_id=objectid).values("rate")))['rate'].mean()
+    except:
+        recipe_rate = None
+
     creator = User.objects.get(id=data.user_id)
-    print("recipeeeee")
-    print(request.user.id)
-    print(data.user_id)
+    
     try:
         is_rated = Rates.objects.filter(recipe_id=objectid, user_id=request.user.id)
     except:
@@ -44,7 +47,7 @@ def recipe(request, objectid):
         if data.user_id == request.user.id:
             is_rated = True
     
-    return render(request, 'crsp/recipe.html', {"data": data, "creator": creator, "is_rated": is_rated})
+    return render(request, 'crsp/recipe.html', {"data": data, "creator": creator, "is_rated": is_rated, "recipe_rate": recipe_rate})
 
 def settings(request):
     print("settings requested")

@@ -95,6 +95,13 @@
         <b style="font-family: Pacifico; font-size: 24px;">{{data.title}}</b><br><br>
         <div class="col-sm"><img src="{% static 'coffee.jpg' %}" style="width:100%; border-radius: 5px;"></div>
         <br>
+        {% if recipe_rate %}
+          <p><i class="bi bi-star-fill" style="font-size: 20px; color:#F1C40F"></i> {{recipe_rate|floatformat:1}}</p>
+          <p>_________________________</p>
+        {% elif not recipe_rate %}
+          <p><i class="bi bi-star-fill" style="font-size: 20px; color:#F1C40F"></i> <em>No Ratings</em></p>
+          <p>_________________________</p>
+        {% endif %}
         <p><b>Beans: </b> {{data.beans}}</p>
         <p><b>Roast Type: </b> {{data.roast}}</p>
         <p><b>Grinder: </b> {{data.grinder}}</p>
