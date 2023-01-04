@@ -95,25 +95,89 @@
       
       <div class="row">
         {% for ad in data1 %}
-        <div class="col-sm shadow p-3 mb-1 bg-body rounded recipe" onclick="location.href='recipe/{{ad.id}}';" style="cursor: pointer; text-align: center; margin-bottom: 0px;">
+        <div class="col-sm shadow p-3 mb-2 bg-body rounded recipe" onclick="location.href='recipe/{{ad.id}}';" style="cursor: pointer; text-align: center; margin-bottom: 0px;">
           <br><br>
           <b>{{ad.title}}</b><br>
           {{ad.beans}} <br>
           {{ad.method}} <br>
           <br>
-          <i class="bi bi-cup-hot" style="font-size: 36px;"></i>
+          {% if recipe_rate1 %}
+          <i class="bi bi-star-fill" style="font-size: 20px; color:#F1C40F"></i> {{recipe_rate1|floatformat:1}}
+          {% elif not recipe_rate1 %}
+          <i class="bi bi-star" style="font-size: 20px;"></i> No Ratings
+          {% endif %}
+        </div>
+        {% endfor %}
+        {% for ad in data2 %}
+        <div class="col-sm shadow p-3 mb-2 bg-body rounded recipe" onclick="location.href='recipe/{{ad.id}}';" style="cursor: pointer; text-align: center; margin-bottom: 0px;">
+          <br><br>
+          <b>{{ad.title}}</b><br>
+          {{ad.beans}} <br>
+          {{ad.method}} <br>
+          <br>
+          {% if recipe_rate2 %}
+          <i class="bi bi-star-fill" style="font-size: 20px; color:#F1C40F"></i> {{recipe_rate2|floatformat:1}}
+          {% elif not recipe_rate2 %}
+          <i class="bi bi-star" style="font-size: 20px;"></i> No Ratings
+          {% endif %}
+        </div>
+        {% endfor %}
+        {% for ad in data3 %}
+        <div class="col-sm shadow p-3 mb-2 bg-body rounded recipe" onclick="location.href='recipe/{{ad.id}}';" style="cursor: pointer; text-align: center; margin-bottom: 0px;">
+          <br><br>
+          <b>{{ad.title}}</b><br>
+          {{ad.beans}} <br>
+          {{ad.method}} <br>
+          <br>
+          {% if recipe_rate3 %}
+          <i class="bi bi-star-fill" style="font-size: 20px; color:#F1C40F"></i> {{recipe_rate3|floatformat:1}}
+          {% elif not recipe_rate3 %}
+          <i class="bi bi-star" style="font-size: 20px;"></i> No Ratings
+          {% endif %}
         </div>
         {% endfor %}
       </div>
       <div class="row">
-        {% for ad in data2 %}
-        <div class="col-sm shadow p-3 mb-1 bg-body rounded recipe" onclick="location.href='recipe/{{ad.id}}';" style="cursor: pointer; text-align: center;">
+        {% for ad in data4 %}
+        <div class="col-sm shadow p-3 mb-2 bg-body rounded recipe" onclick="location.href='recipe/{{ad.id}}';" style="cursor: pointer; text-align: center;">
           <br><br>
           <b>{{ad.title}}</b><br>
           {{ad.beans}} <br>
           {{ad.method}} <br>
           <br>
-          <i class="bi bi-cup-hot" style="font-size: 36px;"></i>
+          {% if recipe_rate4 %}
+          <i class="bi bi-star-fill" style="font-size: 20px; color:#F1C40F"></i> {{recipe_rate4|floatformat:1}}
+          {% elif not recipe_rate4 %}
+          <i class="bi bi-star" style="font-size: 20px;"></i> No Ratings
+          {% endif %}
+        </div>
+        {% endfor %}
+        {% for ad in data5 %}
+        <div class="col-sm shadow p-3 mb-2 bg-body rounded recipe" onclick="location.href='recipe/{{ad.id}}';" style="cursor: pointer; text-align: center;">
+          <br><br>
+          <b>{{ad.title}}</b><br>
+          {{ad.beans}} <br>
+          {{ad.method}} <br>
+          <br>
+          {% if recipe_rate5 %}
+          <i class="bi bi-star-fill" style="font-size: 20px; color:#F1C40F"></i> {{recipe_rate5|floatformat:1}}
+          {% elif not recipe_rate5 %}
+          <i class="bi bi-star" style="font-size: 20px;"></i> No Ratings
+          {% endif %}
+        </div>
+        {% endfor %}
+        {% for ad in data6 %}
+        <div class="col-sm shadow p-3 mb-2 bg-body rounded recipe" onclick="location.href='recipe/{{ad.id}}';" style="cursor: pointer; text-align: center;">
+          <br><br>
+          <b>{{ad.title}}</b><br>
+          {{ad.beans}} <br>
+          {{ad.method}} <br>
+          <br>
+          {% if recipe_rate6 %}
+          <i class="bi bi-star-fill" style="font-size: 20px; color:#F1C40F"></i> {{recipe_rate6|floatformat:1}}
+          {% elif not recipe_rate6 %}
+          <i class="bi bi-star" style="font-size: 20px;"></i> No Ratings
+          {% endif %}
         </div>
         {% endfor %}
       </div>

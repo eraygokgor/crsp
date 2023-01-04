@@ -9,9 +9,51 @@ from crsp.models import Recipes, Rates
 # Create your views here.
 def index(request):
     print("index requested")
-    data1 = Recipes.objects.all().order_by('-id')[:3]
-    data2 = Recipes.objects.all().order_by('-id')[3:6]
-    return render(request, 'crsp/index.html', {"data1": data1, "data2": data2})
+    data1 = Recipes.objects.all().order_by('-id')[0:1]
+    data2 = Recipes.objects.all().order_by('-id')[1:2]
+    data3 = Recipes.objects.all().order_by('-id')[2:3]
+    data4 = Recipes.objects.all().order_by('-id')[3:4]
+    data5 = Recipes.objects.all().order_by('-id')[4:5]
+    data6 = Recipes.objects.all().order_by('-id')[5:6]
+
+    data1_id = list(data1.values("id"))[0]['id']
+    data2_id = list(data2.values("id"))[0]['id']
+    data3_id = list(data3.values("id"))[0]['id']
+    data4_id = list(data4.values("id"))[0]['id']
+    data5_id = list(data5.values("id"))[0]['id']
+    data6_id = list(data6.values("id"))[0]['id']
+
+    try:
+        recipe_rate1 = pd.DataFrame(list(Rates.objects.filter(recipe_id=data1_id).values("rate")))['rate'].mean()
+    except:
+        recipe_rate1 = None
+    
+    try:
+        recipe_rate2 = pd.DataFrame(list(Rates.objects.filter(recipe_id=data2_id).values("rate")))['rate'].mean()
+    except:
+        recipe_rate2 = None
+    
+    try:
+        recipe_rate3 = pd.DataFrame(list(Rates.objects.filter(recipe_id=data3_id).values("rate")))['rate'].mean()
+    except:
+        recipe_rate3 = None
+
+    try:
+        recipe_rate4 = pd.DataFrame(list(Rates.objects.filter(recipe_id=data4_id).values("rate")))['rate'].mean()
+    except:
+        recipe_rate4 = None
+
+    try:
+        recipe_rate5 = pd.DataFrame(list(Rates.objects.filter(recipe_id=data5_id).values("rate")))['rate'].mean()
+    except:
+        recipe_rate5 = None
+    
+    try:
+        recipe_rate6 = pd.DataFrame(list(Rates.objects.filter(recipe_id=data6_id).values("rate")))['rate'].mean()
+    except:
+        recipe_rate6 = None
+
+    return render(request, 'crsp/index.html', {"data1": data1, "data2": data2, "data3": data3, "data4": data4, "data5": data5, "data6": data6, "recipe_rate1":recipe_rate1, "recipe_rate2":recipe_rate2, "recipe_rate3":recipe_rate3, "recipe_rate4":recipe_rate4, "recipe_rate5":recipe_rate5, "recipe_rate6":recipe_rate6})
 
 def signup(request):
     print("signup requested")
