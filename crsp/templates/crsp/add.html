@@ -64,18 +64,20 @@
             </li>
             
             </ul>
-            <form class="d-flex mt-3" role="search">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-                style="font-size: 14px;"
-              />
-              <button class="btn btn-outline-success" type="submit" style="font-size: 14px;">
-                Search
-              </button>
-            </form>
+            <form class="d-flex mt-3" method="post" action="/search">
+              {% csrf_token %}
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              style="font-size: 14px;"
+              id="search" name="search"
+            />
+            <button class="btn btn-outline-success" type="submit" style="font-size: 14px;">
+              Search
+            </button>
+          </form>
           </div>
         </div>
         {% endif %}

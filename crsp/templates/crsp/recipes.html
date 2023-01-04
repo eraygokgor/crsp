@@ -65,18 +65,20 @@
             </li>
             
             </ul>
-            <form class="d-flex mt-3" role="search">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-                style="font-size: 14px;"
-              />
-              <button class="btn btn-outline-success" type="submit" style="font-size: 14px;">
-                Search
-              </button>
-            </form>
+            <form class="d-flex mt-3" method="post" action="/search">
+              {% csrf_token %}
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              style="font-size: 14px;"
+              id="search" name="search"
+            />
+            <button class="btn btn-outline-success" type="submit" style="font-size: 14px;">
+              Search
+            </button>
+          </form>
           </div>
         </div>
         {% endif %}
@@ -87,7 +89,7 @@
     <p style="font-size: 24px; text-align: center; padding-top: 100px;">Your Recipes</p>
     {% for ad in data %}
     <div class="row">
-      <div class="col-sm shadow p-3 mb-5 bg-body rounded recipe" onclick="location.href='recipe/{{ad.id}}';" style="cursor: pointer; text-align: center;">
+      <div class="col-sm shadow p-3 mb-3 bg-body rounded recipe" onclick="location.href='recipe/{{ad.id}}';" style="cursor: pointer; text-align: center;">
         <br><br>
         <b>{{ad.title}}</b><br>
         {{ad.beans}} <br>

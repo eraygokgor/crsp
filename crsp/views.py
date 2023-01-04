@@ -40,6 +40,7 @@ def settings(request):
     if request.user.is_authenticated:
         user = request.user
         return render(request, "crsp/settings.html", {"email": user.email, "first_name": user.first_name, "last_name": user.last_name})
+
 def add_recipe(request):
     if request.method == "GET":
         return render(request, "clickandrent/add.html")
@@ -149,3 +150,8 @@ def signin(request):
         user = request.user
         # return render(request, 'crsp/index.html')
         return redirect("/")
+
+def search(request):
+    search_key = request.POST['search']
+    data = Recipes.objects.filter(title__icontains=f"{search_key}")
+    return render(request, "crsp/search.html", {"data": data})
