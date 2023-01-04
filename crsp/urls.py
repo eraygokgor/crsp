@@ -17,4 +17,5 @@ urlpatterns = [
     path('add_recipe', views.add_recipe, name='add_recipes'),
     path('recipe/<objectid>', views.recipe, name="recipe"),
     path('search', views.search, name="search"),
+    path('rate', views.rate, name="rate"),
 ]

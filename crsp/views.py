@@ -3,7 +3,7 @@ import psycopg2
 from datetime import datetime
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
-from crsp.models import Recipes
+from crsp.models import Recipes, Rates
 
 
 # Create your views here.
@@ -33,7 +33,18 @@ def recipes(request):
 def recipe(request, objectid):
     data = Recipes.objects.get(id=objectid)
     creator = User.objects.get(id=data.user_id)
-    return render(request, 'crsp/recipe.html', {"data": data, "creator": creator})
+    print("recipeeeee")
+    print(request.user.id)
+    print(data.user_id)
+    try:
+        is_rated = Rates.objects.filter(recipe_id=objectid, user_id=request.user.id)
+    except:
+        is_rated = False
+    finally:
+        if data.user_id == request.user.id:
+            is_rated = True
+    
+    return render(request, 'crsp/recipe.html', {"data": data, "creator": creator, "is_rated": is_rated})
 
 def settings(request):
     print("settings requested")
@@ -155,3 +166,17 @@ def search(request):
     search_key = request.POST['search']
     data = Recipes.objects.filter(title__icontains=f"{search_key}")
     return render(request, "crsp/search.html", {"data": data})
+
+def rate(request):
+    if request.method == "POST":
+        rate = request.POST['stars']
+        recipe_id = request.META['HTTP_REFERER'].split("/")[-1]
+        data = {
+            "rate": rate,
+            "user_id": request.user.id,
+            "recipe_id": recipe_id
+        }
+        recipe = Rates(**data)
+        recipe.save()
+
+        return redirect("/recipe/"+recipe_id)
